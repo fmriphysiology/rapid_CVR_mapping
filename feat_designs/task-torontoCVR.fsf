@@ -100,7 +100,7 @@ set fmri(unwarp_dir) y-
 set fmri(st) 3
 
 # Slice timings file
-set fmri(st_file) "/Users/nickb/Analysis/fmrib/cvr_study/derivatives/sub-01/func/sub-01_task-sinCVR_bold_sliceorder.tsv"
+set fmri(st_file) "slice_order"
 
 # BET brain extraction
 set fmri(bet_yn) 1
@@ -173,7 +173,7 @@ set fmri(threshmask) ""
 # 1 : Uncorrected
 # 2 : Voxel
 # 3 : Cluster
-set fmri(thresh) 3
+set fmri(thresh) 2
 
 # P threshold
 set fmri(prob_thresh) 0.05

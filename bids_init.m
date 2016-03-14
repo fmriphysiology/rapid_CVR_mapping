@@ -1,5 +1,10 @@
 function bids=bids_init(bids_dir)
 
+if nargin<1
+	bids=[];
+	return;
+end
+
 if bids_dir(end)~='/'
 	bids_dir=[bids_dir '/'];
 end
@@ -17,6 +22,7 @@ func(2).fname='_task-torontoCVR_bold';
 % setup data structure
 for subj=1:num_subj
 
+	bids(subj).dir=bids_dir;
 	bids(subj).name=participants.textdata{subj+1};
 	
 	for file=1:length(anat)

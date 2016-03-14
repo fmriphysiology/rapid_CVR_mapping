@@ -147,17 +147,17 @@ set fmri(robust_yn) 0
 set fmri(mixed_yn) 2
 
 # Number of EVs
-set fmri(evs_orig) 2
+set fmri(evs_orig) 1
 set fmri(evs_real) 2
 set fmri(evs_vox) 0
 
 # Number of contrasts
-set fmri(ncon_orig) 2
-set fmri(ncon_real) 2
+set fmri(ncon_orig) 1
+set fmri(ncon_real) 1
 
 # Number of F-tests
 set fmri(nftests_orig) 1
-set fmri(nftests_real) 3
+set fmri(nftests_real) 1
 
 # Add constant column to design matrix? (obsolete)
 set fmri(constcol) 0
@@ -257,7 +257,7 @@ set fmri(regstandard_nonlinear_yn) 0
 set fmri(regstandard_nonlinear_warpres) 10 
 
 # High pass filter cutoff
-set fmri(paradigm_hp) 100
+set fmri(paradigm_hp) 200
 
 # Total voxels
 set fmri(totalVoxels) 20643840
@@ -282,7 +282,7 @@ set unwarp_files_mag(1) "fieldmapmag"
 set highres_files(1) "anat_brain"
 
 # EV 1 title
-set fmri(evtitle1) "sin"
+set fmri(evtitle1) "petco2"
 
 # Basic waveform shape (EV 1)
 # 0 : Square
@@ -291,7 +291,7 @@ set fmri(evtitle1) "sin"
 # 3 : Custom (3 column format)
 # 4 : Interaction
 # 10 : Empty (all zeros)
-set fmri(shape1) 1
+set fmri(shape1) 2
 
 # Convolution (EV 1)
 # 0 : None
@@ -301,7 +301,7 @@ set fmri(shape1) 1
 # 4 : Gamma basis functions
 # 5 : Sine basis functions
 # 6 : FIR basis functions
-set fmri(convolve1) 0
+set fmri(convolve1) 2
 
 # Convolve phase (EV 1)
 set fmri(convolve_phase1) 0
@@ -310,86 +310,22 @@ set fmri(convolve_phase1) 0
 set fmri(tempfilt_yn1) 1
 
 # Add temporal derivative (EV 1)
-set fmri(deriv_yn1) 0
+set fmri(deriv_yn1) 1
 
-# Skip (EV 1)
-set fmri(skip1) 0
+# Custom EV file (EV 1)
+set fmri(custom1) "petco2_ev"
 
-# Period (EV 1)
-set fmri(period1) 60
+# Gamma sigma (EV 1)
+set fmri(gammasigma1) 3
 
-# Phase (EV 1)
-set fmri(phase1) 0
-
-# Sinusoid harmonics (EV 1)
-set fmri(nharmonics1) 0 
-
-# Stop (EV 1)
-set fmri(stop1) -1
+# Gamma delay (EV 1)
+set fmri(gammadelay1) 6
 
 # Orthogonalise EV 1 wrt EV 0
 set fmri(ortho1.0) 0
 
 # Orthogonalise EV 1 wrt EV 1
 set fmri(ortho1.1) 0
-
-# Orthogonalise EV 1 wrt EV 2
-set fmri(ortho1.2) 0
-
-# EV 2 title
-set fmri(evtitle2) "cos"
-
-# Basic waveform shape (EV 2)
-# 0 : Square
-# 1 : Sinusoid
-# 2 : Custom (1 entry per volume)
-# 3 : Custom (3 column format)
-# 4 : Interaction
-# 10 : Empty (all zeros)
-set fmri(shape2) 1
-
-# Convolution (EV 2)
-# 0 : None
-# 1 : Gaussian
-# 2 : Gamma
-# 3 : Double-Gamma HRF
-# 4 : Gamma basis functions
-# 5 : Sine basis functions
-# 6 : FIR basis functions
-set fmri(convolve2) 0
-
-# Convolve phase (EV 2)
-set fmri(convolve_phase2) 0
-
-# Apply temporal filtering (EV 2)
-set fmri(tempfilt_yn2) 1
-
-# Add temporal derivative (EV 2)
-set fmri(deriv_yn2) 0
-
-# Skip (EV 2)
-set fmri(skip2) 0
-
-# Period (EV 2)
-set fmri(period2) 60
-
-# Phase (EV 2)
-set fmri(phase2) 15
-
-# Sinusoid harmonics (EV 2)
-set fmri(nharmonics2) 0 
-
-# Stop (EV 2)
-set fmri(stop2) -1
-
-# Orthogonalise EV 2 wrt EV 0
-set fmri(ortho2.0) 0
-
-# Orthogonalise EV 2 wrt EV 1
-set fmri(ortho2.1) 0
-
-# Orthogonalise EV 2 wrt EV 2
-set fmri(ortho2.2) 0
 
 # Contrast & F-tests mode
 # real : control real EVs
@@ -401,7 +337,7 @@ set fmri(con_mode) orig
 set fmri(conpic_real.1) 1
 
 # Title for contrast_real 1
-set fmri(conname_real.1) "sin (1)"
+set fmri(conname_real.1) "petco2"
 
 # Real contrast_real vector 1 element 1
 set fmri(con_real1.1) 1
@@ -412,62 +348,17 @@ set fmri(con_real1.2) 0
 # F-test 1 element 1
 set fmri(ftest_real1.1) 1
 
-# F-test 2 element 1
-set fmri(ftest_real2.1) 1
-
-# F-test 3 element 1
-set fmri(ftest_real3.1) 0
-
-# Display images for contrast_real 2
-set fmri(conpic_real.2) 1
-
-# Title for contrast_real 2
-set fmri(conname_real.2) "cos (1)"
-
-# Real contrast_real vector 2 element 1
-set fmri(con_real2.1) 0
-
-# Real contrast_real vector 2 element 2
-set fmri(con_real2.2) 1.0
-
-# F-test 1 element 2
-set fmri(ftest_real1.2) 1
-
-# F-test 2 element 2
-set fmri(ftest_real2.2) 0
-
-# F-test 3 element 2
-set fmri(ftest_real3.2) 1
-
 # Display images for contrast_orig 1
 set fmri(conpic_orig.1) 1
 
 # Title for contrast_orig 1
-set fmri(conname_orig.1) "sin"
+set fmri(conname_orig.1) "petco2"
 
 # Real contrast_orig vector 1 element 1
 set fmri(con_orig1.1) 1
 
-# Real contrast_orig vector 1 element 2
-set fmri(con_orig1.2) 0
-
 # F-test 1 element 1
 set fmri(ftest_orig1.1) 1
-
-# Display images for contrast_orig 2
-set fmri(conpic_orig.2) 1
-
-# Title for contrast_orig 2
-set fmri(conname_orig.2) "cos"
-
-# Real contrast_orig vector 2 element 1
-set fmri(con_orig2.1) 0
-
-# Real contrast_orig vector 2 element 2
-set fmri(con_orig2.2) 1.0
-
-# F-test 1 element 2
-set fmri(ftest_orig1.2) 1
 
 # Contrast masking - use >0 instead of thresholding?
 set fmri(conmask_zerothresh_yn) 0
@@ -475,62 +366,8 @@ set fmri(conmask_zerothresh_yn) 0
 # Mask real contrast/F-test 1 with real contrast/F-test 2?
 set fmri(conmask1_2) 0
 
-# Mask real contrast/F-test 1 with real contrast/F-test 3?
-set fmri(conmask1_3) 0
-
-# Mask real contrast/F-test 1 with real contrast/F-test 4?
-set fmri(conmask1_4) 0
-
-# Mask real contrast/F-test 1 with real contrast/F-test 5?
-set fmri(conmask1_5) 0
-
 # Mask real contrast/F-test 2 with real contrast/F-test 1?
 set fmri(conmask2_1) 0
-
-# Mask real contrast/F-test 2 with real contrast/F-test 3?
-set fmri(conmask2_3) 0
-
-# Mask real contrast/F-test 2 with real contrast/F-test 4?
-set fmri(conmask2_4) 0
-
-# Mask real contrast/F-test 2 with real contrast/F-test 5?
-set fmri(conmask2_5) 0
-
-# Mask real contrast/F-test 3 with real contrast/F-test 1?
-set fmri(conmask3_1) 0
-
-# Mask real contrast/F-test 3 with real contrast/F-test 2?
-set fmri(conmask3_2) 0
-
-# Mask real contrast/F-test 3 with real contrast/F-test 4?
-set fmri(conmask3_4) 0
-
-# Mask real contrast/F-test 3 with real contrast/F-test 5?
-set fmri(conmask3_5) 0
-
-# Mask real contrast/F-test 4 with real contrast/F-test 1?
-set fmri(conmask4_1) 0
-
-# Mask real contrast/F-test 4 with real contrast/F-test 2?
-set fmri(conmask4_2) 0
-
-# Mask real contrast/F-test 4 with real contrast/F-test 3?
-set fmri(conmask4_3) 0
-
-# Mask real contrast/F-test 4 with real contrast/F-test 5?
-set fmri(conmask4_5) 0
-
-# Mask real contrast/F-test 5 with real contrast/F-test 1?
-set fmri(conmask5_1) 0
-
-# Mask real contrast/F-test 5 with real contrast/F-test 2?
-set fmri(conmask5_2) 0
-
-# Mask real contrast/F-test 5 with real contrast/F-test 3?
-set fmri(conmask5_3) 0
-
-# Mask real contrast/F-test 5 with real contrast/F-test 4?
-set fmri(conmask5_4) 0
 
 # Do contrast masking at all?
 set fmri(conmask1_1) 0

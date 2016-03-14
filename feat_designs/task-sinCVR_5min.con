@@ -1,0 +1,10 @@
+/ContrastName1	sin (1) 
+/ContrastName2	cos (1) 
+/NumWaves	2
+/NumContrasts	2
+/PPheights		1.000000e+00	9.945220e-01
+/RequiredEffect		1.228	1.183
+
+/Matrix
+1.000000e+00 0.000000e+00 
+0.000000e+00 1.000000e+00 
