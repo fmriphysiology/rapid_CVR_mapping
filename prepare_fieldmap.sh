@@ -3,14 +3,14 @@
 # usage: prepare_fieldmap.sh bids-dir bids-sub delta-TE
 
 # check if subject folder exists 
-if [ ! -d "$1/derivatives/$2" ]; then
-	mkdir $1/derivatives/$2
-fi
+#if [ ! -d "$1/derivatives/$2" ]; then
+#	mkdir $1/derivatives/$2
+#fi
 
 # check if fmap folder exists
-if [ ! -d "$1/derivatives/$2/fmap" ]; then
-	mkdir $1/derivatives/$2/fmap
-fi
+#if [ ! -d "$1/derivatives/$2/fmap" ]; then
+#	mkdir $1/derivatives/$2/fmap
+#fi
 
 # extract second echo from magnitude image
 $FSLDIR/bin/fslroi $1/$2/fmap/$2_magnitude $1/derivatives/$2/fmap/$2_magnitude_e2 1 1

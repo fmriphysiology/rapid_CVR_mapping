@@ -1,9 +1,16 @@
-parfor subj=1:10;
+%add dependent paths
+%addpath ~/Documents/MATLAB/json4mat
+%addpath /usr/local/fsl/etc/matlab
+
+for subj=1:1;
 
 	bids_dir='/Users/nickb/Analysis/fmrib/cvr_study/';
 
 	% initialise bids data structure
 	bids=bids_init(bids_dir);
+
+	% create output file structure
+	bids=create_output_dirs(bids,subj);
 
 	% prepare fieldmaps
 	bids=prepare_fieldmap(bids,subj);
