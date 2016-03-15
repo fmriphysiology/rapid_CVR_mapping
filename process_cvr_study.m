@@ -33,6 +33,10 @@ for subj=1:1;
 	% prepare 2nd pass torontoCVR feat designs - subject specific PetCO2 regressor
 	bids=process_torontoCVR_secondpass(bids,subj);
 	
-	% prepare 3rd pass torontoCVR transfer function analysis???
+	% prepare sinCVR maps
+	bids=prepare_sinCVR_maps(bids,subj);
+	
+	% prepare torontoCVR_maps(bids,subj);
+	bids=prepare_torontoCVR_maps(bids,subj);
 	
 end
