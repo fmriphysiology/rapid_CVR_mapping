@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# usage: prep_fmap.sh bids-dir bids-sub delta-TE
+# usage: prepare_fieldmap.sh bids-dir bids-sub delta-TE
 
 # check if subject folder exists 
 if [ ! -d "$1/derivatives/$2" ]; then

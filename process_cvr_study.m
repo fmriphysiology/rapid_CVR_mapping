@@ -1,4 +1,4 @@
-for subj=9:10;
+parfor subj=1:10;
 
 	bids_dir='/Users/nickb/Analysis/fmrib/cvr_study/';
 
@@ -27,4 +27,5 @@ for subj=9:10;
 	bids=process_torontoCVR_secondpass(bids,subj);
 	
 	% prepare 3rd pass torontoCVR transfer function analysis???
+	
 end
