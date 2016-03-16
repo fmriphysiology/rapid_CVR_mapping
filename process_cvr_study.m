@@ -1,13 +1,13 @@
 %add dependent paths
-%addpath ~/Documents/MATLAB/json4mat
+addpath ~/Documents/MATLAB/json4mat
 %addpath /usr/local/fsl/etc/matlab
 
-for subj=1:1;
+bids_dir='/Users/nickb/Analysis/fmrib/cvr_study/';
 
-	bids_dir='/Users/nickb/Analysis/fmrib/cvr_study/';
+% initialise bids data structure
+bids=bids_init(bids_dir);
 
-	% initialise bids data structure
-	bids=bids_init(bids_dir);
+for subj=1:10;
 
 	% create output file structure
 	bids=create_output_dirs(bids,subj);
@@ -38,5 +38,8 @@ for subj=1:1;
 	
 	% prepare torontoCVR_maps(bids,subj);
 	bids=prepare_torontoCVR_maps(bids,subj);
+	
+	% save progress
+	bids=save_progress(bids,subj);
 	
 end
