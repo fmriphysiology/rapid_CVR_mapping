@@ -13,8 +13,8 @@ function bids=prepare_torontoCVR_maps(bids,subj)
 	
 	%from second pass analysis
 	
-	[cope dims scales bpp endian]=read_avw([bids(1).func(2).analysis(2).feat 'stats/cope1']);
-	[mean_func dims scales bpp endian]=read_avw([bids(1).func(2).analysis(2).feat 'mean_func']);
+	[cope dims scales bpp endian]=read_avw([bids(subj).func(2).analysis(2).feat 'stats/cope1']);
+	[mean_func dims scales bpp endian]=read_avw([bids(subj).func(2).analysis(2).feat 'mean_func']);
 	cvr2_mag=cope./mean_func;
 	
 	bids(subj).func(2).results(2).name='cvr magnitude map from torontoCVR second pass';
