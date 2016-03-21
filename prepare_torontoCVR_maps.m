@@ -34,7 +34,7 @@ function bids=prepare_torontoCVR_maps(bids,subj)
 	[pevbold f]=cpsd(ev(:,1)-mean(ev(:,1)),func-repmat(mean(func,1),func_dims(4),1),50,[],[],1/2);
 	H=pevbold./repmat(pev,1,64*64*24);
 	
-	freq=find(f>(1/60),1,'first');
+	freq=find(f>0.01,1,'first');
 	cvr3_mag=reshape(abs(H(freq,:)),func_dims(1),func_dims(2),func_dims(3))./mean_func;
 	cvr3_delay=reshape(atan(real(H(freq,:))./imag(H(freq,:))),func_dims(1),func_dims(2),func_dims(3));
 	cvr3_delay(cvr3_delay<0)=cvr3_delay(cvr3_delay<0)+pi;
