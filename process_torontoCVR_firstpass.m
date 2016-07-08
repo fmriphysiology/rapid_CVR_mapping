@@ -1,5 +1,7 @@
 function bids=process_torontoCVR_firstpass(bids,subj)
 
+	%full analysis using boxcar model rather than PetCO2 regressor
+
 	bids(subj).func(2).analysis(1).name='boxcar regressors';
 	bids(subj).func(2).analysis(1).feat=[bids(subj).dir 'derivatives/' bids(subj).name '/func/' bids(subj).name '_task-torontoCVR_bold.feat/'];
 	system(['cp ' bids(subj).dir 'derivatives/code/feat_designs/task-torontoCVR.* ' bids(subj).dir 'derivatives/' bids(subj).name '/func/']);

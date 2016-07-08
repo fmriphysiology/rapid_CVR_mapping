@@ -374,7 +374,7 @@ set fmri(skip2) 0
 set fmri(period2) 60
 
 # Phase (EV 2)
-set fmri(phase2) 15
+set fmri(phase2) -15
 
 # Sinusoid harmonics (EV 2)
 set fmri(nharmonics2) 0 

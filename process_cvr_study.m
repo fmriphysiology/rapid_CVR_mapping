@@ -39,6 +39,9 @@ for subj=1:10;
 	% prepare torontoCVR_maps(bids,subj);
 	bids=prepare_torontoCVR_maps(bids,subj);
 	
+	%register CVR maps and tissue masks to Toronto functional space
+	bids=register_CVR_maps(bids,subj);
+	
 	% save progress
 	bids=save_progress(bids,subj);
 	

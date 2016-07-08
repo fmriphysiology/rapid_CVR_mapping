@@ -1,5 +1,7 @@
 function bids=process_torontoCVR_secondpass(bids,subj)
 
+	%analysis using PetCO2 regressor 
+
 	status=system(['fslmeants -i ' bids(subj).func(2).analysis(1).feat 'filtered_func_data -m '...
 		bids(subj).func(2).analysis(1).feat 'mask -o '...
 		bids(subj).dir 'derivatives/' bids(subj).name '/func/' bids(subj).name '_task-torontoCVR_braintc.tsv']);

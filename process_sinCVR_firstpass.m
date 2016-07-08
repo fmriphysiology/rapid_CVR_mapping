@@ -1,5 +1,7 @@
 function bids=process_sinCVR_firstpass(bids,subj)
 
+	%using full data
+	
 	bids(subj).func(1).analysis(1).name='sin/cos regressors';
 	bids(subj).func(1).analysis(1).feat=[bids(subj).dir 'derivatives/' bids(subj).name '/func/' bids(subj).name '_task-sinCVR_bold.feat/'];
 	system(['cp ' bids(subj).dir 'derivatives/code/feat_designs/task-sinCVR.* ' bids(subj).dir 'derivatives/' bids(subj).name '/func/']);
