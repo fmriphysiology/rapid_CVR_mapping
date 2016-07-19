@@ -6,6 +6,7 @@ function bids=prepare_sinCVR_maps(bids,subj)
 	[cope2 dims scales bpp endian]=read_avw([bids(subj).func(1).analysis(1).feat 'stats/cope2']);
 	[mean_func dims scales bpp endian]=read_avw([bids(subj).func(1).analysis(1).feat 'mean_func']);
 	sincvr_mag=sqrt(cope1.^2+cope2.^2)./mean_func;
+	sincvr_mag(isnan(sincvr_mag))=0;
 	sincvr_pha=atan2(cope1,cope2); %use atan2 for more robustness
 	
 	bids(subj).func(1).results(1).name='cvr magnitude/phase maps from sinCVR - full data';
@@ -30,6 +31,7 @@ function bids=prepare_sinCVR_maps(bids,subj)
 	[cope2 dims scales bpp endian]=read_avw([bids(subj).func(1).analysis(2).feat 'stats/cope2']);
 	[mean_func dims scales bpp endian]=read_avw([bids(subj).func(1).analysis(2).feat 'mean_func']);
 	sincvr5min_mag=sqrt(cope1.^2+cope2.^2)./mean_func;
+	sincvr5min_mag(isnan(sincvr5min_mag))=0;
 	sincvr5min_pha=atan2(cope1,cope2);	
 
 	bids(subj).func(1).results(2).name='cvr magnitude/phase maps from sinCVR - 5 mins data';
@@ -54,6 +56,7 @@ function bids=prepare_sinCVR_maps(bids,subj)
 	[cope2 dims scales bpp endian]=read_avw([bids(subj).func(1).analysis(3).feat 'stats/cope2']);
 	[mean_func dims scales bpp endian]=read_avw([bids(subj).func(1).analysis(3).feat 'mean_func']);
 	sincvr3min_mag=sqrt(cope1.^2+cope2.^2)./mean_func;
+	sincvr3min_mag(isnan(sincvr3min_mag))=0;
 	sincvr3min_pha=atan2(cope1,cope2);
 	
 	bids(subj).func(1).results(3).name='cvr magnitude/phase maps from sinCVR - 3 mins data';

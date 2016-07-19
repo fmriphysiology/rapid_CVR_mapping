@@ -5,6 +5,7 @@ function bids=prepare_torontoCVR_maps(bids,subj)
 	[cope dims scales bpp endian]=read_avw([bids(subj).func(2).analysis(2).feat 'stats/cope1']);
 	[mean_func dims scales bpp endian]=read_avw([bids(subj).func(2).analysis(2).feat 'mean_func']);
 	torcvr_mag=cope./mean_func;
+	torcvr_mag(isnan(torcvr_mag))=0;
 	
 	bids(subj).func(2).results(1).name='cvr magnitude/delay map from torontoCVR';
 	s=regexp(bids(subj).func(2).fname,'/');
