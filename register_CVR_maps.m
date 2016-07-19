@@ -7,21 +7,21 @@ function bids=register_CVR_maps(bids,subj)
 	ref=[bids(subj).func(2).analysis(2).feat 'mean_func'];
 	omat=[bids(subj).dir 'derivatives/' bids(subj).name '/results/' 'sin2tor.mat'];
 	
-	status=system(['flirt -in ' in ' -ref ' ref ' -omat ' omat]);
+	status=system(['flirt -in ' in ' -ref ' ref ' -dof 6 -omat ' omat]);
 	
 	%register sinusoid 5min to toronto
 	in=[bids(subj).func(1).analysis(2).feat 'mean_func'];
 	ref=[bids(subj).func(2).analysis(2).feat 'mean_func'];
 	omat5min=[bids(subj).dir 'derivatives/' bids(subj).name '/results/' 'sin5min2tor.mat'];
 	
-	status=system(['flirt -in ' in ' -ref ' ref ' -omat ' omat5min]);
+	status=system(['flirt -in ' in ' -ref ' ref ' -dof 6 -omat ' omat5min]);
 		
 	%register sinusoid 3min to toronto
 	in=[bids(subj).func(1).analysis(3).feat 'mean_func'];
 	ref=[bids(subj).func(2).analysis(2).feat 'mean_func'];
 	omat3min=[bids(subj).dir 'derivatives/' bids(subj).name '/results/' 'sin3min2tor.mat'];
 	
-	status=system(['flirt -in ' in ' -ref ' ref ' -omat ' omat3min]);
+	status=system(['flirt -in ' in ' -ref ' ref ' -dof 6 -omat ' omat3min]);
 	
 	%transform all cvr mag maps to toronto space
 	in=bids(subj).func(1).results(1).cvr_mag;
@@ -81,25 +81,24 @@ function bids=register_CVR_maps(bids,subj)
 	status=system(['flirt -in ' in ' -ref ' ref ' -out ' out ' -applyxfm -init ' omat3min]);
 	
 	%transform gm, wm and csf pve masks to toronto space
-	in=bids(1).anat.gm;
-	s=regexp(in,'/');
-	out=[bids(subj).dir 'derivatives/' bids(subj).name '/results/' in(s(end)+1:end) '_gmreg'];
+	in=bids(subj).anat.gm;
+	out=[bids(subj).anat.gm '_reg'];
 	ref=bids(subj).func(2).results(1).cvr_mag;
 	omat=[bids(subj).func(1).analysis(2).feat 'reg/highres2example_func.mat'];
 	
 	status=system(['flirt -in ' in ' -ref ' ref ' -out ' out ' -applyxfm -init ' omat]);
 	
-	in=bids(1).anat.wm;
+	in=bids(subj).anat.wm;
 	s=regexp(in,'/');
-	out=[bids(subj).dir 'derivatives/' bids(subj).name '/results/' in(s(end)+1:end) '_wmreg'];
+	out=[bids(subj).anat.wm '_reg'];
 	ref=bids(subj).func(2).results(1).cvr_mag;
 	omat=[bids(subj).func(1).analysis(2).feat 'reg/highres2example_func.mat'];
 	
 	status=system(['flirt -in ' in ' -ref ' ref ' -out ' out ' -applyxfm -init ' omat]);
 	
-	in=bids(1).anat.csf;
+	in=bids(subj).anat.csf;
 	s=regexp(in,'/');
-	out=[bids(subj).dir 'derivatives/' bids(subj).name '/results/' in(s(end)+1:end) '_csfreg'];
+	out=[bids(subj).anat.csf '_reg'];
 	ref=bids(subj).func(2).results(1).cvr_mag;
 	omat=[bids(subj).func(1).analysis(2).feat 'reg/highres2example_func.mat'];
 	
