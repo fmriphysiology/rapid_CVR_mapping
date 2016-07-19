@@ -32,8 +32,8 @@ function bids=prepare_sinCVR_maps(bids,subj)
 	sindeltapetco2=sqrt(sum(sina(1:2).^2)).*2;
 	sinvardeltapetco2=(sina(1)^2./(sina(1)^2+sina(2)^2))*sinstd(1).^2+(sina(2)^2./(sina(1)^2+sina(2)^2))*sinstd(2).^2;
 	
-	bids(subj).func(1).results(1).petco2base=sina(2);
-	bids(subj).func(1).results(1).petco2basevar=sinstd(2);
+	bids(subj).func(1).results(1).petco2base=sina(3)-sindeltapetco2./2;
+	bids(subj).func(1).results(1).petco2basevar=sinstd(3);
 	bids(subj).func(1).results(1).petco2delta=sindeltapetco2;
 	bids(subj).func(1).results(1).petco2deltavar=sinvardeltapetco2;
 			
@@ -95,8 +95,8 @@ function bids=prepare_sinCVR_maps(bids,subj)
 	sindeltapetco2=sqrt(sum(sina(1:2).^2)).*2;
 	sinvardeltapetco2=(sina(1)^2./(sina(1)^2+sina(2)^2))*sinstd(1).^2+(sina(2)^2./(sina(1)^2+sina(2)^2))*sinstd(2).^2;
 
-	bids(subj).func(1).results(2).petco2base=sina(2);
-	bids(subj).func(1).results(2).petco2basevar=sinstd(2);
+	bids(subj).func(1).results(2).petco2base=sina(3)-sindeltapetco2./2;
+	bids(subj).func(1).results(2).petco2basevar=sinstd(3);
 	bids(subj).func(1).results(2).petco2delta=sindeltapetco2;
 	bids(subj).func(1).results(2).petco2deltavar=sinvardeltapetco2;
 		
@@ -158,8 +158,8 @@ function bids=prepare_sinCVR_maps(bids,subj)
 	sindeltapetco2=sqrt(sum(sina(1:2).^2)).*2;
 	sinvardeltapetco2=(sina(1)^2./(sina(1)^2+sina(2)^2))*sinstd(1).^2+(sina(2)^2./(sina(1)^2+sina(2)^2))*sinstd(2).^2;
 
-	bids(subj).func(1).results(3).petco2base=sina(2);
-	bids(subj).func(1).results(3).petco2basevar=sinstd(2);
+	bids(subj).func(1).results(3).petco2base=sina(3)-sindeltapetco2./2;
+	bids(subj).func(1).results(3).petco2basevar=sinstd(3);
 	bids(subj).func(1).results(3).petco2delta=sindeltapetco2;
 	bids(subj).func(1).results(3).petco2deltavar=sinvardeltapetco2;
 		
