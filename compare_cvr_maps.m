@@ -101,7 +101,7 @@ function bids=compare_cvr_maps(bids,subj);
 	bids(subj).comparison.sin5min_vs_sin_pha=xpha_sin5minsin;
 	bids(subj).comparison.sin3min_vs_sin_pha=xpha_sin3minsin;	
 	
-	%keyboard;
+	keyboard;
 	
 	
 	function f=modchisqd(x,sinvals,sinsigma,torvals,torsigma)
