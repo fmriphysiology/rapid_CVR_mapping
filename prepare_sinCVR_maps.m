@@ -44,12 +44,14 @@ function bids=prepare_sinCVR_maps(bids,subj)
 	cope=sqrt(cope1.^2+cope2.^2);
 	varcope=(cope1.^2./(cope1.^2+cope2.^2)).*varcope1+(cope2.^2./(cope1.^2+cope2.^2)).*varcope2;
 	sincvr_magvar=(cope./mean_func./sindeltapetco2).^2.*(varcope./cope.^2+sigmasqd./mean_func.^2+sinvardeltapetco2./sindeltapetco2.^2);
+	sincvr_magvar(isnan(sincvr_magvar))=0;
 	
 	%estimate phase and errors
 	sincvr_pha=atan2(cope1,cope2); %use atan2 for more robustness
 	
 	varcopediv=(cope1./cope2).^2.*(varcope1./cope1.^2+varcope2./cope2.^2);
 	sincvr_phavar=varcopediv./(1+(cope1./cope2).^2).^2;	
+	sincvr_phavar(isnan(sincvr_phavar))=0;
 	
 	%write out images
 	bids(subj).func(1).results(1).name='cvr magnitude/phase maps from sinCVR - full data';
@@ -107,12 +109,14 @@ function bids=prepare_sinCVR_maps(bids,subj)
 	cope=sqrt(cope1.^2+cope2.^2);
 	varcope=(cope1.^2./(cope1.^2+cope2.^2)).*varcope1+(cope2.^2./(cope1.^2+cope2.^2)).*varcope2;
 	sincvr5min_magvar=(cope./mean_func./sindeltapetco2).^2.*(varcope./cope.^2+sigmasqd./mean_func.^2+sinvardeltapetco2./sindeltapetco2.^2);
+	sincvr5min_magvar(isnan(sincvr5min_magvar))=0;
 	
 	%estimate phase and errors
 	sincvr5min_pha=atan2(cope1,cope2);	
 	
 	varcopediv=(cope1./cope2).^2.*(varcope1./cope1.^2+varcope2./cope2.^2);
 	sincvr5min_phavar=varcopediv./(1+(cope1./cope2).^2).^2;	
+	sincvr5min_phavar(isnan(sincvr5min_phavar))=0;
 	
 	%write out images
 	bids(subj).func(1).results(2).name='cvr magnitude/phase maps from sinCVR - 5 mins data';
@@ -164,18 +168,20 @@ function bids=prepare_sinCVR_maps(bids,subj)
 	bids(subj).func(1).results(3).petco2deltavar=sinvardeltapetco2;
 		
 	%estimate magnitude and errors
-	sincvr3min_mag=sqrt(cope1.^2+cope2.^2)./mean_func;
+	sincvr3min_mag=sqrt(cope1.^2+cope2.^2)./mean_func./sindeltapetco2;
 	sincvr3min_mag(isnan(sincvr3min_mag))=0;
 	
 	cope=sqrt(cope1.^2+cope2.^2);
 	varcope=(cope1.^2./(cope1.^2+cope2.^2)).*varcope1+(cope2.^2./(cope1.^2+cope2.^2)).*varcope2;
 	sincvr3min_magvar=(cope./mean_func./sindeltapetco2).^2.*(varcope./cope.^2+sigmasqd./mean_func.^2+sinvardeltapetco2./sindeltapetco2.^2);
-
+	sincvr3min_magvar(isnan(sincvr3min_magvar))=0;
+	
 	%estimate phase and errors
 	sincvr3min_pha=atan2(cope1,cope2);
 	
 	varcopediv=(cope1./cope2).^2.*(varcope1./cope1.^2+varcope2./cope2.^2);
 	sincvr3min_phavar=varcopediv./(1+(cope1./cope2).^2).^2;	
+	sincvr3min_phavar(isnan(sincvr3min_phavar))=0;
 	
 	%write out images 
 	bids(subj).func(1).results(3).name='cvr magnitude/phase maps from sinCVR - 3 mins data';
