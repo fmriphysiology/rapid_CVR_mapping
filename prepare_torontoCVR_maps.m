@@ -39,7 +39,12 @@ function bids=prepare_torontoCVR_maps(bids,subj)
 	[tora torstd]=lscov(torX,torpetco2i);
 	tordeltapetco2=tora(1);
 	torvardeltapetco2=torstd(1)^2;
-			
+	
+	%figure;
+	%plot(torpetco2i,'x');
+	%hold on;
+	%plot(torX*tora,'-');
+	
 	bids(subj).func(2).results(1).petco2base=tora(2);
 	bids(subj).func(2).results(1).petco2basevar=torstd(2);
 	bids(subj).func(2).results(1).petco2delta=tordeltapetco2;

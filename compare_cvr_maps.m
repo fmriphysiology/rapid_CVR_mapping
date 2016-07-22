@@ -83,6 +83,8 @@ function bids=compare_cvr_maps(bids,subj);
 	
 	%toronto vs sinusoid
 	x_torsin=fminsearch(@(x) modchisqd(x,sincvr_mags(mask>0),sincvr_magvars(mask>0),abs(torcvr_mags(mask>0)),torcvr_magvars(mask>0)),[1 0]);
+	x_torsin5min=fminsearch(@(x) modchisqd(x,sincvr5min_mags(mask>0),sincvr5min_magvars(mask>0),abs(torcvr_mags(mask>0)),torcvr_magvars(mask>0)),[1 0]);
+	x_torsin3min=fminsearch(@(x) modchisqd(x,sincvr3min_mags(mask>0),sincvr3min_magvars(mask>0),abs(torcvr_mags(mask>0)),torcvr_magvars(mask>0)),[1 0]);
 	
 	%sinusoid vs sinusoid 5min
 	x_sin5minsin=fminsearch(@(x) modchisqd(x,sincvr_mags(mask>0),sincvr_magvars(mask>0),sincvr5min_mags(mask>0),sincvr5min_magvars(mask>0)),[1 0]);
@@ -96,10 +98,18 @@ function bids=compare_cvr_maps(bids,subj);
 
 	%save out values
 	bids(subj).comparison.tor_vs_sin_mag=x_torsin;
+	bids(subj).comparison.tor_vs_sin5min_mag=x_torsin5min;
+	bids(subj).comparison.tor_vs_sin3min_mag=x_torsin3min;
 	bids(subj).comparison.sin5min_vs_sin_mag=x_sin5minsin;
 	bids(subj).comparison.sin3min_vs_sin_mag=x_sin3minsin;
 	bids(subj).comparison.sin5min_vs_sin_pha=xpha_sin5minsin;
 	bids(subj).comparison.sin3min_vs_sin_pha=xpha_sin3minsin;	
+	
+	bids(subj).comparison.gm_torcvr=[mean(torcvr_mags(find((mask>0).*(gms>0.5)))) std(torcvr_mags(find((mask>0).*(gms>0.5))))];
+	bids(subj).comparison.gm_sincvr=[mean(sincvr_mags(find((mask>0).*(gms>0.5)))) std(sincvr_mags(find((mask>0).*(gms>0.5))))];
+	bids(subj).comparison.gm_sincvr5min=[mean(sincvr5min_mags(find((mask>0).*(gms>0.5)))) std(sincvr5min_mags(find((mask>0).*(gms>0.5))))];
+	bids(subj).comparison.gm_sincvr3min=[mean(sincvr3min_mags(find((mask>0).*(gms>0.5)))) std(sincvr3min_mags(find((mask>0).*(gms>0.5))))];
+
 	
 	keyboard;
 	
