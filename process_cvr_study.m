@@ -1,6 +1,6 @@
 %add dependent paths
 addpath ~/Documents/MATLAB/json4mat
-%addpath /usr/local/fsl/etc/matlab
+addpath /usr/local/fsl/etc/matlab
 
 bids_dir='/Users/nickb/Analysis/fmrib/cvr_study/';
 
@@ -8,6 +8,8 @@ bids_dir='/Users/nickb/Analysis/fmrib/cvr_study/';
 bids=bids_init(bids_dir);
 
 for subj=1:10;
+
+	disp(['Processing subject ' num2str(subj) '...']);
 
 	% create output file structure
 	bids=create_output_dirs(bids,subj);
@@ -41,9 +43,6 @@ for subj=1:10;
 	
 	%register CVR maps and tissue masks to Toronto functional space
 	bids=register_CVR_maps(bids,subj);
-	
-	%compare CVR maps between methods
-	bids=compare_cvr_maps(bids,subj);
 	
 	% save progress
 	bids=save_progress(bids,subj);

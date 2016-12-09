@@ -36,7 +36,7 @@ set fmri(outputdir) "output_dir"
 set fmri(tr) 2.000000 
 
 # Total volumes
-set fmri(npts) 150
+set fmri(npts) 30
 
 # Delete volumes
 set fmri(ndelete) 0
@@ -115,7 +115,7 @@ set fmri(norm_yn) 0
 set fmri(perfsub_yn) 0
 
 # Highpass temporal filtering
-set fmri(temphp_yn) 1
+set fmri(temphp_yn) 0
 
 # Lowpass temporal filtering
 set fmri(templp_yn) 0
@@ -260,7 +260,7 @@ set fmri(regstandard_nonlinear_warpres) 10
 set fmri(paradigm_hp) 100
 
 # Total voxels
-set fmri(totalVoxels) 14745600
+set fmri(totalVoxels) 8847360
 
 
 # Number of lower-level copes feeding into higher-level analysis

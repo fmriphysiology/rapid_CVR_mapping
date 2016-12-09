@@ -24,7 +24,7 @@ set fmri(relative_yn) 0
 set fmri(help_yn) 1
 
 # Run Featwatcher
-set fmri(featwatcher_yn) 1
+set fmri(featwatcher_yn) 0
 
 # Cleanup first-level standard-space images
 set fmri(sscleanup_yn) 0
@@ -115,7 +115,7 @@ set fmri(norm_yn) 0
 set fmri(perfsub_yn) 0
 
 # Highpass temporal filtering
-set fmri(temphp_yn) 0
+set fmri(temphp_yn) 1
 
 # Lowpass temporal filtering
 set fmri(templp_yn) 0
@@ -374,7 +374,7 @@ set fmri(skip2) 0
 set fmri(period2) 60
 
 # Phase (EV 2)
-set fmri(phase2) -15
+set fmri(phase2) 15
 
 # Sinusoid harmonics (EV 2)
 set fmri(nharmonics2) 0 

@@ -55,3 +55,4 @@ function bids=process_torontoCVR_secondpass(bids,subj)
 	fclose(fin);
 	fclose(fout);
 	status=system(['feat ' bids(subj).dir 'derivatives/' bids(subj).name '/func/task-torontoCVR_ev.fsf']);
+	

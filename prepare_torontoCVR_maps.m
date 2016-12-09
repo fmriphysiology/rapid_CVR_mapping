@@ -51,10 +51,12 @@ function bids=prepare_torontoCVR_maps(bids,subj)
 	bids(subj).func(2).results(1).petco2deltavar=torvardeltapetco2;
 
 	%estimate magnitude and errors	
-	torcvr_mag=cope./mean_func./tordeltapetco2;
+	torcvr_mag=cope./mean_func;
 	torcvr_mag(isnan(torcvr_mag))=0;
 	
-	torcvr_magvar=(cope./mean_func./tordeltapetco2).^2.*(varcope./cope.^2+sigmasqd./mean_func.^2+torvardeltapetco2./tordeltapetco2.^2);
+	torcvr_magvar=(cope./mean_func).^2.*(varcope./cope.^2+sigmasqd./mean_func.^2);
+
+	torcvr_magrsd=sqrt(torcvr_magvar)./torcvr_mag;
 		
 	%write out mag images
 	bids(subj).func(2).results(1).name='cvr magnitude/delay map from torontoCVR';
@@ -63,16 +65,23 @@ function bids=prepare_torontoCVR_maps(bids,subj)
 	save_avw(torcvr_mag,bids(subj).func(2).results(1).cvr_mag,'f',scales');	
 	
 	bids(subj).func(2).results(1).cvr_magvar=[bids(subj).dir 'derivatives/' bids(subj).name '/results/' bids(subj).func(2).fname(s(end)+1:end) '_torcvr-magvar'];
-	save_avw(torcvr_magvar,bids(subj).func(2).results(1).cvr_magvar,'f',scales');	
+	save_avw(torcvr_magvar,bids(subj).func(2).results(1).cvr_magvar,'f',scales');
+		
+	bids(subj).func(2).results(1).cvr_magrsd=[bids(subj).dir 'derivatives/' bids(subj).name '/results/' bids(subj).func(2).fname(s(end)+1:end) '_torcvr-magrsd'];
+	save_avw(torcvr_magrsd,bids(subj).func(2).results(1).cvr_magrsd,'f',scales');	
 	
 	%cvr phase from transfer function analysis (no errors since no defined method for calculating variance)
 	ev=dlmread([bids(subj).func(2).analysis(2).feat 'design.mat'],'\t',5,0);
 	[func_data func_dims]=read_avw([bids(subj).func(2).analysis(2).feat 'filtered_func_data']);
 	func=reshape(func_data,prod(func_dims(1:3)),func_dims(4))';
 	
-	[H F]=tfestimate(ev(:,1)-mean(ev(:,1)),func-repmat(mean(func,1),func_dims(4),1),50,[],[],1/2);
+	%[H F]=tfestimate(ev(:,1)-mean(ev(:,1)),func-repmat(mean(func,1),func_dims(4),1),50,[],[],1/2);
 	
-	freq=find(F>0.01,1,'first');
+	[pevbold f]=cpsd(ev(:,1)-mean(ev(:,1)),func-repmat(mean(func,1),func_dims(4),1),50,[],[],1/2);
+	[pev f]=pwelch(ev(:,1)-mean(ev(:,1)),50,[],[],1/2);
+	H=pevbold./repmat(pev,1,prod(func_dims(1:3)));
+	
+	freq=find(f>0.01,1,'first');
 	torcvr_pha=reshape(atan2(imag(H(freq,:)),real(H(freq,:))),func_dims(1),func_dims(2),func_dims(3)); %use atan2 for more robustness
 
 	s=regexp(bids(subj).func(2).fname,'/');
