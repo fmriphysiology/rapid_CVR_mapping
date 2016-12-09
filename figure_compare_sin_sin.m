@@ -1,6 +1,4 @@
 function figure_compare_sin_sin(bids)
-		
-	addpath /Users/nickb/Documents/MATLAB/errorbarxy/
 
 	for subj=1:10
 	

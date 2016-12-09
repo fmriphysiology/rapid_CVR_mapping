@@ -1,11 +1,11 @@
-%add dependent paths
-addpath ~/Documents/MATLAB/json4mat
-addpath /usr/local/fsl/etc/matlab
 
 bids_dir='/Users/nickb/Analysis/fmrib/cvr_study/';
 
 % load bids data structure
 load([bids_dir 'derivatives/bids.mat']);
+
+%add dependent paths
+addpath([bids(1).dir 'derivatives/code/errorbarxy/']);
 
 close all;
 

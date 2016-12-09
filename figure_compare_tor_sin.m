@@ -112,7 +112,6 @@ function figure_compare_tor_sin(bids)
 	%subjects to include in analysis
 	subj_inc=1:9; 
 
-	addpath /Users/nickb/Documents/MATLAB/errorbarxy/
 	figure;
 	clf;
 	nums=[2 3 4 5 6 8];
