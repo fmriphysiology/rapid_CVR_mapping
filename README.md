@@ -1,4 +1,4 @@
-# Rapid CVR mapping
+# Code developed to investigate new approaches to cerebrovascular reactivity mapping using MRI
 
 The code in this repository was used to analyse two approaches to cerebrovascular reactivity mapping. The data acquired in this study can be found at https://doi.org/10.5287/bodleian:Xk48adQAO. Please reference this code using the forthcoming Zenodo DOI, or for the dataset the DOI above, if you use either in your work.
 
