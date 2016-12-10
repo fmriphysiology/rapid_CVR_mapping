@@ -192,7 +192,7 @@ function figure_compare_tor_sin(bids)
 	hold on;
 	plot([0 10],[1 1],'k--');
 	axis square
-	[h_magps p_magps]=ttest(agm_magps(1,subj_inc)-1)
+	[h_magps p_magps]=ttest(agm_magps(1,subj_inc)-1);
 	annotation('textbox',[0.22 0.75 0.5 0.15],'String',['p=' num2str(round(p_magps,2))],'linestyle','none','fontsize',12);
 	title('Comparison of slopes between CVR magnitude estimates');
 
@@ -202,7 +202,7 @@ function figure_compare_tor_sin(bids)
 	hold on;
 	plot([0 10],[1 1],'k--');	
 	axis square
-	[h_phaps p_phaps]=ttest(agm_phaps(1,subj_inc)-1)
+	[h_phaps p_phaps]=ttest(agm_phaps(1,subj_inc)-1);
 	annotation('textbox',[0.22 0.75 0.5 0.15],'String',['p=' num2str(round(p_phaps,2))],'linestyle','none','fontsize',12);
 	title('Comparison of slopes between CVR phase estimates');
 		
