@@ -60,7 +60,7 @@ function figure_sincvrmaps(bids,subj)
 	set(gca,'xticklabel',[]);
 	set(gca,'ytick',[]);
 	set(gca,'xtick',[]);
-	title('Sinusoid zf-stat - 7 mins');
+	title('Sinusoid CVR magnitude - 7 mins');
 	
 	figure;
 	smontage(sin5cvr_mag(:,:,slices)./bids(subj).func(1).results(3).petco2delta.*100,1,1,[0 0.6]);
@@ -69,7 +69,7 @@ function figure_sincvrmaps(bids,subj)
 	set(gca,'xticklabel',[]);
 	set(gca,'ytick',[]);
 	set(gca,'xtick',[]);
-	title('Sinusoid zf-stat - 5 mins');
+	title('Sinusoid CVR magnitude - 5 mins');
 	
 	figure;
 	smontage(sin3cvr_mag(:,:,slices)./bids(subj).func(1).results(5).petco2delta.*100,1,1,[0 0.6]);
@@ -78,7 +78,7 @@ function figure_sincvrmaps(bids,subj)
 	set(gca,'xticklabel',[]);
 	set(gca,'ytick',[]);
 	set(gca,'xtick',[]);
-	title('Sinusoid zf-stat - 3 mins');
+	title('Sinusoid CVR magnitude - 3 mins');
 
 	figure;
 	smontage(sincvr_pha(:,:,slices),1,1,[-pi pi]);
@@ -87,7 +87,7 @@ function figure_sincvrmaps(bids,subj)
 	set(gca,'xticklabel',[]);
 	set(gca,'ytick',[]);
 	set(gca,'xtick',[]);
-	title('Sinusoid zf-stat - 7 mins');
+	title('Sinusoid CVR phase - 7 mins');
 	
 	figure;
 	smontage(sin5cvr_pha(:,:,slices),1,1,[-pi pi]);
@@ -96,7 +96,7 @@ function figure_sincvrmaps(bids,subj)
 	set(gca,'xticklabel',[]);
 	set(gca,'ytick',[]);
 	set(gca,'xtick',[]);
-	title('Sinusoid zf-stat - 5 mins');
+	title('Sinusoid CVR phase - 5 mins');
 	
 	figure;
 	smontage(sin3cvr_pha(:,:,slices),1,1,[-pi pi]);
@@ -105,6 +105,6 @@ function figure_sincvrmaps(bids,subj)
 	set(gca,'xticklabel',[]);
 	set(gca,'ytick',[]);
 	set(gca,'xtick',[]);
-	title('Sinusoid zf-stat - 3 mins');
+	title('Sinusoid CVR phase - 3 mins');
 	
 	%keyboard;
