@@ -269,7 +269,7 @@ function figure_compare_sin_sin(bids)
 	figure; %mean CVR pha vs time
 	errorbar((7:-1:1),mean(allphaavg(1:9,:)),std(allphaavg(1:9,:)),'o-')
 	axis square;
-	ylim([-0.2 0.3]);
+	ylim([-0.3 0.3]);
 	set(gca,'ytick',[-0.2:0.1:0.3])
 	title('Mean CVR Phase as a function of scan duration');
 
@@ -308,7 +308,7 @@ function figure_compare_sin_sin(bids)
 		disp('CVR Magnitude SD: Groups are not significantly different');
 	end
 	
-	figure; %mean CVR mag vs time
+	figure; %mean number of voxels vs time
 	errorbar((7:-1:1),mean(allstatnum(1:9,:)),std(allstatnum(1:9,:)),'o-')
 	axis square;
 	ylim([0 2e4]);
