@@ -81,7 +81,8 @@ function bids=prepare_torontoCVR_maps(bids,subj)
 	[pev f]=pwelch(ev(:,1)-mean(ev(:,1)),50,[],[],1/2);
 	H=pevbold./repmat(pev,1,prod(func_dims(1:3)));
 	
-	freq=find(f>0.01,1,'first');
+	%freq=find(f>0.01,1,'first');
+	freq=find(f>1/60,1,'first');
 	torcvr_pha=reshape(atan2(imag(H(freq,:)),real(H(freq,:))),func_dims(1),func_dims(2),func_dims(3)); %use atan2 for more robustness
 
 	s=regexp(bids(subj).func(2).fname,'/');

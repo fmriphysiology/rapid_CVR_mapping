@@ -1,4 +1,4 @@
-function figure_compare_tor_sin(bids)
+function figure_compare_tor_sin_ev(bids)
 
 	%subjects to include in analysis
 	subj_inc=1:9; 
@@ -15,8 +15,8 @@ function figure_compare_tor_sin(bids)
 	torcvr_pha=read_avw(bids(subj).func(2).results(1).cvr_pha);
 
 	%read in sinusoid CVR maps (full data)
-	sincvr_mag=read_avw([bids(subj).func(1).results(1).cvr_mag '_reg']);
-	sincvr_magvar=read_avw([bids(subj).func(1).results(1).cvr_magvar '_reg']);
+	sincvr_mag=read_avw([bids(subj).func(1).results(8).cvr_mag]);
+	sincvr_magvar=read_avw([bids(subj).func(1).results(8).cvr_magvar]);
 	sincvr_pha=read_avw([bids(subj).func(1).results(1).cvr_pha '_reg']);
 	sincvr_phavar=read_avw([bids(subj).func(1).results(1).cvr_phavar '_reg']);
 	
@@ -82,7 +82,7 @@ function figure_compare_tor_sin(bids)
 	mask2=(mask>0).*(diffmap<pi).*(diffmap>-pi);
 	x_pha(subj,:)=fminsearch(@(x) funfunpha(x,torcvr_phasn(mask2>0),sincvr_phasn(mask2>0)),[1 0],options);
 
-	x_mag(subj,:)=fminsearch(@(x) funfun(x,abs(torcvr_mags(mask>0)),torcvr_magvars(mask>0),sincvr_mags(mask>0),sincvr_magvars(mask>0)),[1 0],options);
+	x_mag(subj,:)=fminsearch(@(x) funfun(x,abs(torcvr_mags(mask>0)),torcvr_magvars(mask>0),abs(sincvr_mags(mask>0)),sincvr_magvars(mask>0)),[1 0],options);
 
 	[corr_mag(:,:,subj) sig_mag(:,:,subj)]=corrcoef(torcvr_mags(mask>0),sincvr_mags(mask>0));
 	
@@ -92,8 +92,6 @@ function figure_compare_tor_sin(bids)
 		exsubjtorpha=torcvr_phasn(mask2>0);
 		exsubjsinpha=sincvr_phasn(mask2>0);
 	end
-	
-	%keyboard;
 	
 	end
 
@@ -118,7 +116,7 @@ function figure_compare_tor_sin(bids)
 	annotation('textbox',[0.22 0.75 0.5 0.15],'String',['p=' num2str(round(p_magps,2))],'linestyle','none','fontsize',12);
 	title('Comparison of slopes between CVR magnitude estimates');
 	ylim([0 1.4]);
-	
+
 	figure;
 	bar(x_mag(subj_inc,2).*100);
 	hold on;
@@ -128,35 +126,6 @@ function figure_compare_tor_sin(bids)
 	annotation('textbox',[0.22 0.75 0.5 0.15],'String',['p=' num2str(round(p_magint,2))],'linestyle','none','fontsize',12);
 	title('Comparison of intercepts between CVR magnitude estimates');
 
-	figure;
-	plot(exsubjtorpha,exsubjsinpha,'.');
-	hold on;
-	lim=max([get(gca,'xlim'); get(gca,'ylim')]);
-	plot([-pi pi],[-pi pi],'k-');
-	plot([-pi pi],[-pi pi]*x_pha(exsubj,1)+x_pha(exsubj,2),'k-');
-	ylim([-pi pi]);
-	xlim([-pi pi]);
-	axis square;
-
-	figure;
-	bar(x_pha(subj_inc,1));
-	hold on;
-	plot([0 10],[1 1],'k--');
-	axis square
-	[h_magps p_magps]=ttest(x_pha(subj_inc,1)-1);
-	annotation('textbox',[0.22 0.75 0.5 0.15],'String',['p=' num2str(round(p_magps,2))],'linestyle','none','fontsize',12);
-	title('Comparison of slopes between CVR phase estimates');
-	ylim([0 1.4]);
-	
-	figure;
-	bar(x_pha(subj_inc,2));
-	hold on;
-	plot([0 10],[0 0],'k--');
-	axis square
-	[h_magint p_magint]=ttest(x_pha(subj_inc,2));
-	annotation('textbox',[0.22 0.75 0.5 0.15],'String',['p=' num2str(round(p_magint,2))],'linestyle','none','fontsize',12);
-	title('Comparison of intercepts between CVR phase estimates');
-	
 	function f=funfun(x,tor,torvar,sin,sinvar)
 		
 		f=sum((sin-(x(1).*tor+x(2))).^2./(sinvar+x(1).^2.*torvar));
@@ -165,9 +134,8 @@ function figure_compare_tor_sin(bids)
 
 	function f=funfunpha(x,tor,sin)
 			
-		%f=sum(((sin-(x(1).*tor+x(2)))./sinvar).^2);
-		%f=sum((sin-(x(1).*tor+x(2))).^2+((x(1).*sin+x(2))-tor).^2);
 		f=sum(((x(1).*tor+x(2)-sin)./sqrt(1+x(1).^2)).^2);
 		
 	return;
+
 	

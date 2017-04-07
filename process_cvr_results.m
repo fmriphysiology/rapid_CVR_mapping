@@ -1,5 +1,5 @@
 
-bids_dir='/Users/nickb/Analysis/fmrib/cvr_study/';
+bids_dir='/Users/nickb/Analysis/fmrib/cvr_study_release/';
 
 % load bids data structure
 load([bids_dir 'derivatives/bids.mat']);
@@ -26,4 +26,13 @@ figure_sincvrmaps(bids,1);
 
 %produce figure 5
 figure_compare_sin_sin(bids);
+
+%produce figure s1
+figure_plot_toronto_coherence(bids);
+
+%produce figure s2
+figure_plot_mean_etco2(bids);
+
+%produce figure s3
+figure_compare_tor_sin_ev(bids);
 
